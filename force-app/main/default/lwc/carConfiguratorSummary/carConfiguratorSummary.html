@@ -1,0 +1,110 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-28-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <template lwc:if={showAddToOppModal}>
+        <c-product-add-to-opp product={productInfo} account-record={accountId} opportunity-record={opportunityId} onclose={handleCloseModal} onsaveprod={handleSubmitSave}></c-product-add-to-opp>
+    </template>
+    <lightning-card>
+        <div slot="title" class="slds-text-heading_large slds-m-around_x-small slds-p-around_small">
+           Lincoln Navigator 2023
+        </div>
+        <template lwc:if={isLoading}> 
+            <div slot="actions" class="slds-box brand-box">
+                <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+                    <div style="z-index:0;" class="slds-m-right_small">
+                        <div role="status" class="slds-m-top_medium slds-spinner slds-spinner_small slds-spinner_inline slds-spinner_brand">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                    <span class="slds-text-body_small text-brand">Checking Inventory</span>
+                </div>
+            </div>                    
+        </template>
+        <template lwc:else>
+            <div slot="actions" class="slds-box success-box">
+                <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+                    <div style="z-index:0;" class="slds-m-right_small">
+                        <lightning-icon icon-name="action:approval" size="x-small"></lightning-icon>
+                    </div>
+                    <span class="text-success">Available</span>
+                </div>
+            </div>
+        </template>
+        <div class="slds-box slds-m-around_small">
+            <div class="container-images">
+                <img src={imgUrl} />
+            </div>
+        </div>
+        <div class="slds-box slds-m-around_small">
+            <span class="slds-text-heading_small">SUMMARY</span>
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                <span class="slds-form-element__label">PAINT</span>
+                <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                    <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                </button>
+                <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                    <div class="slds-form-element__static label-show">{paint.label}
+                    </div>
+                    <div class="slds-text-title slds-float_right">{paint.price}</div>
+                </div>
+            </div>
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                <span class="slds-form-element__label">PACKAGES</span>
+                <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                    <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                </button>
+                <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                    <div class="slds-form-element__static label-show">{pack.label}
+                    </div>
+                    <div class="slds-text-title slds-float_right">{pack.price}</div>
+                </div>
+            </div>
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                <span class="slds-form-element__label">EXTERIOR</span>
+                <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                    <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                </button>
+                <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                    <div class="slds-form-element__static label-show slds-truncate slds-truncate_container_75">
+                        {wheel.label}
+                    </div>
+                    <div class="slds-text-title slds-float_right">{wheel.price}</div>
+                </div>
+            </div>
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                <span class="slds-form-element__label">INTERIOR</span>
+                <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                    <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                </button>
+                <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                    <div class="slds-form-element__static label-show">{interior.label}
+                    </div>
+                    <div class="slds-text-title slds-float_right">{interior.price}</div>
+                </div>
+            </div>
+            <div
+                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                <span class="slds-text-heading_small">TOTAL</span>
+                <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                    <div class="slds-form-element__static label-show">2023 LINCOLN NAVIGATOR
+                    </div>
+                    <div class="slds-text-title slds-float_right">85 000 $</div>
+                </div>
+            </div>
+            <div class="slds-clearfix slds-m-top_small">
+                <lightning-button class="slds-float_right" onclick={handleSubmitOppForSave} label="Add To Opportunity" icon-name="utility:add" icon-position="right" variant="brand"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

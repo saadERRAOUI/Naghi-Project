@@ -1,0 +1,24 @@
+.container-images {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.text-brand {
+    color: rgb(1, 68, 134);
+    font-weight: bold;
+}
+
+.brand-box {
+    border-color: rgb(1, 68, 134);
+}
+
+.success-box {
+    border-color: #04A59A;
+}
+
+.text-success {
+    color: #04A59A;
+    font-weight: bold;
+}

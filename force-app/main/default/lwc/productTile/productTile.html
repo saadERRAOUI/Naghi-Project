@@ -1,0 +1,41 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-24-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <div draggable={draggable} ondragstart={handleDragStart}>
+        <a onclick={handleClick}>
+            <div class="content slds-clearfix">
+                <template lwc:if={selectable}>
+                    <lightning-button-icon 
+                        class="slds-float-left"
+                        icon-name="utility:add"
+                        size="small"
+                        onclick={handleAddToOppProducts}
+                    ></lightning-button-icon>
+                </template>
+                <img
+                    src={pictureUrl}
+                    class="product slds-align_absolute-center"
+                    alt="Product picture"
+                />
+                <div>
+                    <p class="title slds-align_absolute-center">{name}</p>
+                    <p class="slds-align_absolute-center">
+                        MSRP:&nbsp;
+                        <lightning-formatted-number
+                            format-style="currency"
+                            currency-code="USD"
+                            value={msrp}
+                            class="price"
+                            maximum-fraction-digits="0"
+                        ></lightning-formatted-number>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</template>

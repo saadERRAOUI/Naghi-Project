@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-27-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+        <div class="slds-gutters slds-grid slds-m-left_medium slds-m-right_medium slds-m-top_small">            
+            <template for:each={images} for:item="car">
+                <div key={car.label} class="slds-col card slds-p-around_none slds-m-around_small">
+                    <div class="slds-card">
+                        <img class="card-image" src={car.url}/>
+                        <div class="slds-align_absolute-center slds-p-around_medium desc-container">
+                            <h2 class="slds-text-heading_medium">{car.label}</h2>
+                            <p class="slds-text-color_inverse-weak">{car.description}</p>
+                            <span class="container-explore slds-m-top_x-small">
+                                <p class="slds-text-heading_small slds-m-right_xx-small">Explore</p>
+                                <lightning-icon class="icon" icon-name="action:back" style="transform: rotate(180deg);" size="xx-small"></lightning-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>   
+</template>

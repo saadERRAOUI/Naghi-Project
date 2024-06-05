@@ -1,0 +1,70 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-24-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <lightning-card icon-name="standard:apex_plugin">
+        <template lwc:if={recordId}>
+            <span slot="title">{productName}</span>
+            <lightning-button-icon
+                icon-name="utility:expand_alt"
+                slot="actions"
+                onclick={handleNavigateToRecord}
+                ><label>Open Record</label></lightning-button-icon
+            >
+            <div class="slds-var-m-horizontal_medium">
+                <img
+                    src={productPictureUrl}
+                    class="product"
+                    alt="Product picture"
+                />
+                <lightning-record-view-form
+                    record-id={recordId}
+                    onload={handleRecordLoaded}
+                    object-api-name="Product2"
+                >
+                    <lightning-output-field
+                        field-name={categoryField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={levelField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={msrpField}
+                    ></lightning-output-field>
+                    <section>Components</section>
+                    <lightning-output-field
+                        field-name={batteryField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={chargerField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={motorField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={materialField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={forkField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={frontBrakesField}
+                    ></lightning-output-field>
+                    <lightning-output-field
+                        field-name={rearBrakesField}
+                    ></lightning-output-field>
+                </lightning-record-view-form>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <c-placeholder
+                message="Select a product to see details"
+            ></c-placeholder>
+        </template>
+    </lightning-card>
+</template>

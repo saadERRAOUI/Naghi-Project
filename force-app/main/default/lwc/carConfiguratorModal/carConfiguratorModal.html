@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-28-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <lightning-quick-action-panel header="Open Car Configurator ?">
+        <div class="slds-align_absolute-center">
+            Are you sure you want to open this item on the Car Configurator ?
+        </div>
+
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Cancel"
+                onclick={closeAction}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Open Configurator"
+                class="slds-m-left_x-small"
+                onclick={handleOpenConfigurator}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

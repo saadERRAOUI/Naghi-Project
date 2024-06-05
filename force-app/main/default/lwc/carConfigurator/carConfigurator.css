@@ -1,0 +1,56 @@
+.container-images > div {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+div.black,
+span.black{
+    /* background: linear-gradient(#767676, #070707); */
+    background-color: #382A26;
+}
+
+div.blue,
+span.blue{
+    /* background: linear-gradient(#3468c3, #04348b); */
+    background-color: #524139;
+}
+
+div.white,
+span.white{
+    /* background: linear-gradient(#f4f4f4, #cacaca); */
+    background-color: #8D786C;
+}
+
+div.green,
+span.green{
+    /* background: linear-gradient(#8ed65a, #0e7d10); */
+    background-color: #B69D8B;
+}
+
+div.red,
+span.red{
+    /* background: linear-gradient(#fb7f69, #a2261a); */
+    background-color: #DFC5AF;
+}
+
+div.tan,
+span.tan{
+    /* background: linear-gradient(#fb7f69, #a2261a); */
+    background-color: #6A2E2B;
+}
+
+div.wheel-image-container {
+    width: 65%;
+}
+
+div.label-show {
+    width: fit-content;
+}
+
+div.color-options-container { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

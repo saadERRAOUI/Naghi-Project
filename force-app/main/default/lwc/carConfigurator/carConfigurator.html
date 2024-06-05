@@ -1,0 +1,211 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-27-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <!-- <div class="slds-card"> -->
+    <lightning-card title="PREFERENCES" icon-name="custom:custom67">
+        <!-- <div class="slds-grid slds-gutters"> -->
+            <!-- <div class="slds-col slds-size_2-of-3">
+                <div class="container-images">
+                    <img src={imgUrl} />
+                </div>
+            </div> -->
+            <div class="slds-scrollable_y" style="height:40rem;">
+                <div class="container-options">
+                    <lightning-accordion active-section-name="PAINT">
+                        <lightning-accordion-section name="PAINT" label="PAINT">
+                            <fieldset class="slds-form-element">
+                                <legend class="slds-form-element__legend slds-form-element__label">Select an option
+                                </legend>
+                                <div class="slds-form-element__control color-options-container">
+                                    <template for:each={exteriorColors} for:item="color">
+                                        <div key={color.code} class="slds-visual-picker slds-visual-picker_small slds-m-around_xx-small">
+                                            <input type="radio" id={color.id} value={color.id}
+                                                name="example-unique-name-35" checked={color.selected}
+                                                onclick={handleSelectedPaint} data-class={color.id} class="" />
+                                            <label for={color.id}>
+                                                <span class={color.className}>
+                                                </span>
+                                                <span class="slds-visual-picker__body">
+                                                    <a class="slds-text-heading_small">{color.label}</a>
+                                                    <span class="slds-text-title">{color.price}</span>
+                                                </span>
+                                                <span class="slds-icon_container slds-visual-picker__text-check">
+                                                    <template lwc:if={color.selected}>
+                                                        <lightning-icon icon-name="utility:check" variant="inverse"
+                                                            size="x-small"></lightning-icon>
+                                                    </template>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </template>
+                                </div>
+                            </fieldset>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="PACKAGES" label="PACKAGES">
+                            <fieldset class="slds-form-element">
+                                <legend class="slds-form-element__legend slds-form-element__label">Select an option
+                                </legend>
+                                <div class="slds-form-element__control">
+                                    <template for:each={packagesOffered} for:item="pack">
+                                        <div key={pack.id} class="slds-visual-picker slds-visual-picker_vertical">
+                                            <input type="radio" id={pack.id} value={pack.id} checked={pack.selected}
+                                                onclick={handleSelectedPack} data-class={pack.id} class=""
+                                                disabled={pack.disabled} />
+                                            <label for={pack.id}>
+                                                <span class="slds-visual-picker__figure slds-visual-picker__text">
+                                                    <span>
+                                                        <span
+                                                            class="slds-text-heading_medium slds-m-bottom_x-small">{pack.label}</span>
+                                                        <span class="slds-text-title">{pack.price}</span>
+                                                        <span class="slds-p-around_xx-small">
+                                                            <a href="#">More details</a>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span class="slds-icon_container slds-visual-picker__text-check">
+                                                    <template lwc:if={pack.selected}>
+                                                        <lightning-icon icon-name="utility:check" variant="inverse"
+                                                            size="x-small"></lightning-icon>
+                                                    </template>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </template>
+                                </div>
+                            </fieldset>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="EXTERIOR" label="EXTERIOR">
+                            <fieldset class="slds-form-element">
+                                <legend class="slds-form-element__legend slds-form-element__label">Select an option
+                                </legend>
+                                <div class="slds-form-element__control">
+                                    <template for:each={exteriorOffered} for:item="wheel">
+                                        <div key={wheel.id}
+                                            class="slds-visual-picker slds-visual-picker_vertical slds-visual-picker_small">
+                                            <input type="radio" id={wheel.id} value={wheel.id}
+                                                name="example-unique-name-37" checked={wheel.selected}
+                                                onclick={handleSelectedExterior} data-class={wheel.id} class="" />
+                                            <label for={wheel.id}>
+                                                <span class="slds-visual-picker__figure slds-visual-picker__text">
+                                                    <div class="slds-grid slds-gutters">
+                                                        <div class="slds-col slds-size_1-of-3">
+                                                            <div class="wheel-image-container">
+                                                                <img src={wheel.url} alt="wheel-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-col slds-size_2-of-3">
+                                                            <span
+                                                                class="slds-text-heading_small slds-m-bottom_x-small">{wheel.label}</span>
+                                                        </div>
+                                                    </div>
+                                                    <span>
+                                                    </span>
+                                                </span>
+                                                <span class="slds-icon_container slds-visual-picker__text-check">
+                                                    <template lwc:if={wheel.selected}>
+                                                        <lightning-icon icon-name="utility:check" variant="inverse"
+                                                            size="x-small"></lightning-icon>
+                                                    </template>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </template>
+                                </div>
+                            </fieldset>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="INTERIOR" label="INTERIOR">
+                            <fieldset class="slds-form-element">
+                                <legend class="slds-form-element__legend slds-form-element__label">Select an option
+                                </legend>
+                                <div class="slds-form-element__control">
+                                    <template for:each={interirorColors} for:item="color">
+                                        <div key={color.code} class="slds-visual-picker slds-visual-picker_small">
+                                            <input type="radio" id={color.id} value={color.id} checked={color.selected}
+                                                onclick={handleSelectedInterior} data-class={color.id} class="" />
+                                            <label for={color.id}>
+                                                <span class={color.className}>
+                                                </span>
+                                                <span class="slds-visual-picker__body">
+                                                    <a class="slds-text-heading_small">{color.label}</a>
+                                                    <span class="slds-text-title">{color.price}</span>
+                                                </span>
+                                                <span class="slds-icon_container slds-visual-picker__text-check">
+                                                    <template lwc:if={color.selected}>
+                                                        <lightning-icon icon-name="utility:check" variant="inverse"
+                                                            size="x-small"></lightning-icon>
+                                                    </template>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </template>
+                                </div>
+                            </fieldset>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </div>
+                <!-- <div class="slds-box slds-m-right_x-small">
+                    <span class="slds-text-heading_small">SUMMARY</span>
+                    <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                        <span class="slds-form-element__label">PAINT</span>
+                        <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                            <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                        </button>
+                        <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                            <div class="slds-form-element__static label-show">{paint.label}
+                            </div>
+                            <div class="slds-text-title slds-float_right">{paint.price}</div>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                        <span class="slds-form-element__label">PACKAGES</span>
+                        <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                            <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                        </button>
+                        <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                            <div class="slds-form-element__static label-show">{pack.label}
+                            </div>
+                            <div class="slds-text-title slds-float_right">{pack.price}</div>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                        <span class="slds-form-element__label">EXTERIOR</span>
+                        <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                            <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                        </button>
+                        <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                            <div class="slds-form-element__static label-show slds-truncate slds-truncate_container_75">{wheel.label}
+                            </div>
+                            <div class="slds-text-title slds-float_right">{wheel.price}</div>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                        <span class="slds-form-element__label">INTERIOR</span>
+                        <button class="slds-button slds-button_icon slds-float_right" title="Edit: Status">
+                            <lightning-icon icon-name="utility:edit" size="x-small"></lightning-icon>
+                        </button>
+                        <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                            <div class="slds-form-element__static label-show">{interior.label}
+                            </div>
+                            <div class="slds-text-title slds-float_right">{interior.price}</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div  class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-clearfix slds-m-bottom_x-small">
+                        <span class="slds-text-heading_small">TOTAL</span>
+                        <div class="slds-form-element__control slds-m-top_small slds-clearfix">
+                            <div class="slds-form-element__static label-show">2024 LINCOLN NAVIGATOR PREMIERE
+                            </div>
+                            <div class="slds-text-title slds-float_right">45 000 $</div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
+    </lightning-card>
+</template>

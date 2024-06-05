@@ -1,0 +1,48 @@
+<!--
+  @description       : 
+  @author            : ERRAOUI Saad
+  @group             : 
+  @last modified on  : 05-27-2024
+  @last modified by  : ERRAOUI Saad
+-->
+<template>
+    <div class="slds-card slds-var-p-around_x-small">
+        <template lwc:if={searchBarIsVisible}>
+            <lightning-input
+                label="Search Key"
+                type="text"
+                onchange={handleSearchKeyChange}
+                class="search-bar"
+            ></lightning-input>
+        </template>
+        <template lwc:if={productsParsed}>
+            <template lwc:if={productsParsed.length}>
+                <div class="content">
+                    <template
+                        for:each={productsParsed}
+                        for:item="product"
+                    >
+                        <c-product-tile
+                            key={product.Id}
+                            product={product.Product2}
+                            draggable={tilesAreDraggable}
+                            onselected={handleProductSelected}
+                            class="slds-var-m-around_x-small"
+                            selectable={selectable}
+                            onaddoppprods={handleShowAddToOppModal}
+                        >
+                        </c-product-tile>
+                    </template>
+                </div>
+            </template>
+            <template lwc:else>
+                <c-placeholder
+                    message="There are no products related to this opportunity"
+                ></c-placeholder>
+            </template>
+        </template>
+        <template lwc:if={products.error}>
+            <c-error-panel errors={products.error}></c-error-panel>
+        </template>
+    </div>
+</template>
